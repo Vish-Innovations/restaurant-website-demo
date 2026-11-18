@@ -1,0 +1,40 @@
+.gal {
+  columns: 3 280px;
+  column-gap: 16px;
+}
+
+.gal figure {
+  break-inside: avoid;
+  margin-bottom: 16px;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  cursor: zoom-in;
+}
+
+.gal img {
+  width: 100%;
+  transition: .6s;
+}
+
+.gal figure:hover img {
+  transform: scale(1.06);
+  filter: brightness(.7);
+}
+
+.gal figcaption {
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  font-size: .8rem;
+  background: rgba(0,0,0,.55);
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 20px;
+  opacity: 0;
+  transition: .3s;
+}
+
+.gal figure:hover figcaption {
+  opacity: 1;
+}

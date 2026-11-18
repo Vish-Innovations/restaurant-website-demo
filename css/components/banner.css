@@ -1,0 +1,73 @@
+/* ================= BANNER ================= */
+.banner {
+  position: relative;
+  height: 360px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.banner>img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg,rgba(60,30,14,.72) 0%,rgba(60,30,14,.3) 70%,rgba(60,30,14,.15) 100%);
+}
+
+.banner .container {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 50px;
+}
+
+.banner h1 {
+  font-size: clamp(2.2rem,5vw,3.6rem);
+}
+
+.banner p.sub {
+  color: #f3e6d6;
+  max-width: 600px;
+  margin-top: 8px;
+}
+
+.crumb {
+  color: #e8dccd;
+  font-size: .85rem;
+  margin-top: 8px;
+}
+
+.crumb a {
+  color: var(--gold-l);
+  display: inline-block;
+  padding: 8px 2px;
+}
+
+.banner.tall .container {
+  padding-bottom: 100px;
+}
+
+@media(max-width:760px) {
+  .banner,
+  .banner.tall {
+    height: auto !important;   /* beats inline height on branch pages */
+    min-height: 300px;
+  }
+  .banner.tall {
+    min-height: 420px;
+  }
+  .banner .container {
+    padding-top: 48px;
+    padding-bottom: 36px;
+  }
+  .banner.tall .container {
+    padding-bottom: 86px;      /* room for the info card that overlaps the banner */
+  }
+}

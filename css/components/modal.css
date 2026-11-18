@@ -1,0 +1,33 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(60,30,14,.7);
+  display: none;
+  z-index: 200;
+  overflow: auto;
+  padding: 40px 16px;
+  backdrop-filter: blur(4px);
+}
+
+.modal.open {
+  display: block;
+}
+
+.modal-box {
+  max-width: 680px;
+  margin: auto;
+  position: relative;
+  animation: fade .4s;
+}
+
+.mx {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  background: none;
+  border: 0;
+  color: var(--muted);
+  font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 3;
+}

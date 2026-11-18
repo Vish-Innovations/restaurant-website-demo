@@ -1,0 +1,329 @@
+/* ================= TOP BAR + NAV ================= */
+.topbar {
+  background: var(--red);
+  font-size: .78rem;
+  color: rgba(255,255,255,.92);
+}
+
+.topbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 38px;
+  gap: 16px;
+}
+
+.topbar .l,.topbar .r {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+
+.topbar span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.topbar svg.i {
+  width: 14px;
+  height: 14px;
+}
+
+.topbar a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 8px 4px; /* bigger tap area */
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4cd964;
+  box-shadow: 0 0 0 4px rgba(76,217,100,.25);
+  display: inline-block;
+}
+
+.dot.off {
+  background: #ff7a66;
+  box-shadow: 0 0 0 4px rgba(232,197,122,.25);
+}
+
+.topbar .dot {
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(255,255,255,.3);
+}
+
+.topbar .dot.off {
+  background: #ffd2c6;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: rgba(251,248,241,.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 4px 20px rgba(90,50,20,.05);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 74px;
+  gap: 20px;
+}
+
+.logo {
+  font-family: 'Playfair Display',serif;
+  font-size: 1.55rem;
+  font-weight: 800;
+  letter-spacing: .5px;
+}
+
+.logo span {
+  color: var(--red);
+}
+
+.logo small {
+  display: block;
+  font-family: 'Poppins';
+  font-size: .58rem;
+  letter-spacing: 3px;
+  color: var(--gold);
+  font-weight: 600;
+  margin-top: -4px;
+}
+
+.links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  list-style: none;
+}
+
+.links>li>a {
+  font-size: .86rem;
+  color: var(--muted);
+  position: relative;
+  padding: 6px 0;
+  transition: .2s;
+  font-weight: 500;
+}
+
+.links>li>a:hover,.links>li>a.active {
+  color: var(--ink);
+}
+
+.links>li>a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background: var(--red);
+  border-radius: 2px;
+}
+
+.dd {
+  position: relative;
+}
+
+.dd-menu {
+  position: absolute;
+  top: 150%;
+  left: -14px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 8px;
+  min-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: .25s;
+  box-shadow: var(--shadow2);
+}
+
+.dd:hover .dd-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.dd-menu a {
+  display: block;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: .86rem;
+  color: var(--muted);
+}
+
+.dd-menu a:hover {
+  background: var(--bg2);
+  color: var(--ink);
+}
+
+.burger {
+  display: none;
+  background: none;
+  border: 0;
+  color: var(--ink);
+  cursor: pointer;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border-radius: 12px;
+}
+
+.burger svg.i {
+  width: 28px;
+  height: 28px;
+}
+
+.nav-cta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Laptops 1181-1320px: tighten the menu so it never wraps */
+@media(min-width:1181px) and (max-width:1320px) {
+  .nav { gap: 12px; }
+  .links { gap: 14px; }
+  .links>li>a { font-size: .8rem; }
+  .nav-cta .btn { padding: 10px 16px; font-size: .8rem; }
+  .logo { font-size: 1.4rem; }
+}
+
+/* Dark scrim behind the open mobile menu */
+.nav-scrim {
+  display: none;
+}
+
+@media(max-width:1180px) {
+  /* backdrop-filter would make the header the containing block of the fixed drawer
+     (drawer then sits off-screen and widens the page), so switch it off here. */
+  header {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: var(--bg);
+  }
+  .burger {
+    display: grid;
+  }
+  .nav-scrim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(60,30,14,.55);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s, visibility 0s .3s;
+    z-index: 1;
+  }
+  body.nav-open .nav-scrim {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .3s;
+  }
+  body.nav-open {
+    overflow: hidden;
+  }
+  .links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    height: 100dvh;
+    width: min(340px,88%);
+    visibility: hidden;
+    overscroll-behavior: contain;
+    flex-direction: column;
+    align-items: flex-start;
+    background: var(--bg);
+    padding: 90px 30px 30px;
+    gap: 6px;
+    transform: translateX(100%);
+    transition: transform .35s, visibility 0s .35s;
+    border-left: 1px solid var(--line);
+    overflow: auto;
+    z-index: 2;
+    box-shadow: -10px 0 30px rgba(0,0,0,.1);
+  }
+  .links.open {
+    transform: none;
+    visibility: visible;
+    transition: transform .35s;
+  }
+  .links>li {
+    width: 100%;
+  }
+  .links>li>a {
+    display: block;
+    font-size: 1.02rem;
+    padding: 12px 0; /* 46px+ tap target */
+  }
+  .dd-menu a {
+    padding: 11px 12px;
+  }
+  .links>li>a.active::after {
+    display: none;
+  }
+  .links>li>a.active {
+    color: var(--red);
+  }
+  .dd-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    background: none;
+    border: 0;
+    padding: 0 0 0 14px;
+    box-shadow: none;
+  }
+  .close-nav {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+  }
+  .nav-cta .btn {
+    display: none;
+  }
+}
+
+@media(min-width:1181px) {
+  .close-nav {
+    display: none!important;
+  }
+}
+
+@media(max-width:700px) {
+  .topbar .l span:nth-child(2),.topbar .r {
+    display: none;
+  }
+  .topbar .container { height: 34px; }
+  .topbar { font-size: .74rem; }
+}
+
+@media(max-width:480px) {
+  .nav { height: 64px; gap: 10px; }
+  .logo { font-size: 1.3rem; }
+  .logo small { letter-spacing: 2px; font-size: .52rem; }
+}
+
+/* drawer: scrollable so the last links never hide behind the bottom bar */
+@media(max-width:1180px) {
+  .links {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: calc(96px + env(safe-area-inset-bottom));
+  }
+}

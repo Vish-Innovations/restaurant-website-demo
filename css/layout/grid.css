@@ -1,0 +1,35 @@
+/* ================= GRIDS & CARDS ================= */
+.g2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.g3 {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 26px;
+}
+
+.g4 {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 22px;
+}
+
+@media(max-width:960px) {
+  .g2 {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .g3,.g4 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media(max-width:600px) {
+  .g3,.g4 {
+    grid-template-columns: 1fr;
+  }
+}

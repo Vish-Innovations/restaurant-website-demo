@@ -1,0 +1,275 @@
+/* ================= BASE ================= */
+:root {
+  --bg: #fffcf6;
+  --bg2: #fbf1e2;
+  --card: #fff;
+  --line: #efdfc8;
+  --ink: #33261c;
+  --muted: #6b5a4c;
+  --red: #d4701a;
+  --red2: #b45a10;
+  --gold: #c8961e;
+  --gold-l: #ffd98a;
+  --green: #43a653;
+  --danger: #c0392b;   /* form errors – kept separate from the brand colour */
+  --shadow: 0 6px 22px rgba(90,50,20,.07);
+  --shadow2: 0 20px 40px rgba(90,50,20,.14);
+  --gutter: clamp(16px, 4.5vw, 44px);   /* side padding that grows with the screen */
+  --section-y: clamp(56px, 8vw, 90px);  /* vertical rhythm between sections */
+}
+
+/* Large screens: scale the whole rem-based design up instead of leaving empty margins */
+@media (min-width: 1600px) {
+  html { font-size: 112.5%; }
+}
+@media (min-width: 2200px) {
+  html { font-size: 131%; }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Poppins',system-ui,sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.7;
+  overflow-x: hidden;
+  overflow-x: clip; /* never allow sideways scrolling, without breaking sticky headers */
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+iframe, video, svg { max-width: 100%; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,h2,h3,h4 {
+  font-family: 'Playfair Display',Georgia,serif;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+b,strong {
+  font-weight: 600;
+}
+
+.container {
+  width: min(75rem, calc(100% - var(--gutter) * 2));
+  margin: auto;
+}
+
+.section {
+  padding: var(--section-y) 0;
+}
+
+.alt {
+  background: var(--bg2);
+}
+
+.eyebrow {
+  color: var(--gold);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: .75rem;
+  font-weight: 600;
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 30px;
+  height: 1px;
+  background: currentColor;
+}
+
+.title {
+  font-size: clamp(1.65rem, 1.1rem + 2.6vw, 2.8rem);
+  margin: 10px 0 16px;
+}
+
+.lead {
+  color: var(--muted);
+  max-width: 640px;
+}
+
+.center {
+  text-align: center;
+}
+
+.center .lead {
+  margin: auto;
+}
+
+.mt {
+  margin-top: clamp(26px, 4vw, 40px);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 26px;
+  border-radius: 50px;
+  background: var(--red);
+  color: #fff;
+  font-weight: 500;
+  border: 2px solid var(--red);
+  cursor: pointer;
+  transition: .3s;
+  font-size: .92rem;
+  font-family: inherit;
+  white-space: nowrap;
+  min-height: 46px;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:hover {
+  background: var(--red2);
+  border-color: var(--red2);
+  transform: translateY(-2px);
+}
+
+.btn-o {
+  background: transparent;
+  border-color: rgba(90,45,20,.3);
+  color: var(--ink);
+}
+
+.btn-o:hover {
+  background: var(--red);
+  color: #fff;
+  border-color: var(--red);
+}
+
+.btn-sm {
+  padding: 9px 18px;
+  font-size: .82rem;
+  min-height: 40px;
+}
+
+.btns {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+svg.i {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.icon-box {
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  background: rgba(212,112,26,.1);
+  color: var(--red);
+  display: grid;
+  place-items: center;
+  margin-bottom: 16px;
+}
+
+.icon-box svg.i {
+  width: 26px;
+  height: 26px;
+}
+
+/* photo sections keep white text */
+.hero,.banner,.cta {
+  color: #fff;
+}
+
+.hero .eyebrow,.banner .eyebrow,.cta .eyebrow {
+  color: var(--gold-l);
+}
+
+.hero .btn-o,.banner .btn-o,.cta .btn-o {
+  border-color: rgba(255,255,255,.75);
+  color: #fff;
+}
+
+.hero .btn-o:hover,.banner .btn-o:hover,.cta .btn-o:hover {
+  background: #fff;
+  color: var(--ink);
+}
+
+/* Grid/flex children may shrink below their content width (prevents sideways overflow) */
+.g2 > *, .g3 > *, .g4 > *, .fg > *, .wk > *, .dgrid > *, .bbar > * { min-width: 0; }
+
+/* Touch devices: no hover-lift stuck on tap */
+@media (hover: none) {
+  .btn:hover, .card:hover, .dish:hover, .pr:hover, .at:hover, .occ-c:hover, .switch:hover { transform: none; }
+}
+
+/* ---------- Phones ---------- */
+@media (max-width: 600px) {
+  body { line-height: 1.65; }
+  .lead { font-size: .95rem; }
+  .eyebrow { letter-spacing: 2px; font-size: .7rem; }
+  .eyebrow::before { width: 20px; }
+  /* Call-to-action buttons: full-width, easy to tap */
+  .btns > .btn { flex: 1 1 100%; }
+  .btns > .btn-sm { flex: 1 1 calc(50% - 7px); }
+  .btn { white-space: normal; text-align: center; }
+}
+@media (max-width: 380px) {
+  .btns > .btn-sm { flex-basis: 100%; }
+}
+
+/* ================= PAGES / ANIMATION ================= */
+.page {
+  display: none;
+}
+
+.page.show {
+  display: block;
+  animation: fade .6s ease;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 1s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}

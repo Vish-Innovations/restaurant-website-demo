@@ -1,0 +1,38 @@
+.mbar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top: 1px solid var(--line);
+  z-index: 95;
+  grid-template-columns: repeat(3,1fr);
+  box-shadow: 0 -4px 16px rgba(90,50,20,.08);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.mbar a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 0;
+  font-size: .72rem;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.mbar a.rs {
+  background: var(--red);
+  color: #fff;
+}
+
+@media(max-width:768px) {
+  .mbar {
+    display: grid;
+  }
+  body {
+    padding-bottom: calc(62px + env(safe-area-inset-bottom));
+  }
+}

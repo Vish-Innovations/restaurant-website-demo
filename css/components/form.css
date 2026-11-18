@@ -1,0 +1,228 @@
+/* ================= FORMS / FAQ / MODAL ================= */
+.form {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 36px;
+  box-shadow: var(--shadow);
+}
+
+.form h3 {
+  font-size: 1.6rem;
+  margin-bottom: 4px;
+}
+
+.form>p {
+  color: var(--muted);
+  font-size: .9rem;
+  margin-bottom: 24px;
+}
+
+.fg {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.f {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.f.full {
+  grid-column: 1/-1;
+}
+
+.f label {
+  font-size: .8rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.f input,.f select,.f textarea {
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: .92rem;
+  transition: .2s;
+  width: 100%;
+}
+
+.f input:focus,.f select:focus,.f textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+.f .bad {
+  border-color: var(--danger)!important;
+  background: #fdf3f1!important;
+  box-shadow: 0 0 0 3px rgba(192,57,43,.14);
+}
+
+.f.has-e label {
+  color: var(--danger);
+}
+
+.f .e {
+  color: var(--danger);
+  font-size: .78rem;
+  font-weight: 500;
+  display: none;
+}
+
+.f.has-e .e {
+  display: block;
+}
+
+.f.has-e .e::before {
+  content: "! ";
+  font-weight: 700;
+}
+
+.f.shake {
+  animation: shake .4s;
+}
+
+@keyframes shake {
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+.f input[type=date] {
+  color-scheme: light;
+}
+
+.form .btn {
+  margin-top: 22px;
+  width: 100%;
+  justify-content: center;
+}
+
+/* ---- Success state: the form is replaced by a confirmation panel ---- */
+.ok {
+  display: none;
+  text-align: center;
+  padding: 14px 4px 6px;
+}
+
+.ok.show {
+  display: block;
+  animation: okIn .5s cubic-bezier(.2,.8,.2,1);
+}
+
+.form.is-done > *:not(.ok):not(.mx) {
+  display: none;
+}
+
+.ok h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  margin: 14px 0 6px;
+}
+
+.ok p {
+  color: var(--muted);
+  font-size: .92rem;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.ok-check {
+  width: 84px;
+  height: 84px;
+  display: block;
+  margin: 0 auto;
+}
+
+.ok-ring {
+  fill: rgba(212,112,26,.08);
+  stroke: var(--red);
+  stroke-width: 2.5;
+  stroke-dasharray: 151;
+  stroke-dashoffset: 151;
+  animation: okDraw .7s .1s ease forwards;
+}
+
+.ok-tick {
+  fill: none;
+  stroke: var(--red);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: okDraw .5s .7s ease forwards;
+}
+
+.ok-details {
+  margin: 22px auto 4px;
+  max-width: 420px;
+  text-align: left;
+  background: var(--bg2);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 6px 18px;
+}
+
+.ok-details div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--line);
+  font-size: .9rem;
+}
+
+.ok-details div:last-child {
+  border-bottom: 0;
+}
+
+.ok-details span {
+  color: var(--muted);
+}
+
+.ok-details b {
+  text-align: right;
+  color: var(--ink);
+}
+
+.ok .btn {
+  width: auto;
+  min-width: 220px;
+  margin: 16px 6px 0;
+}
+
+.ok .ok-wa {
+  background: #25D366;
+  border-color: #25D366;
+  color: #fff;
+}
+
+@keyframes okDraw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes okIn {
+  from { opacity: 0; transform: translateY(14px) scale(.98); }
+  to { opacity: 1; transform: none; }
+}
+
+@media(max-width:600px) {
+  .ok .btn {
+    width: 100%;
+    margin: 12px 0 0;
+  }
+}
+
+@media(max-width:600px) {
+  .fg {
+    grid-template-columns: 1fr;
+  }
+  .form {
+    padding: 24px;
+  }
+}

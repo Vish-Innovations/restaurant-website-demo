@@ -1,0 +1,43 @@
+.faq-i {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq-q {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 0;
+  color: var(--ink);
+  padding: 22px 0;
+  font-size: 1.02rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+}
+
+.faq-q span {
+  color: var(--gold);
+  transition: .3s;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: .4s;
+  color: var(--muted);
+  font-size: .92rem;
+}
+
+.faq-i.open .faq-a {
+  max-height: 240px;
+  padding-bottom: 22px;
+}
+
+.faq-i.open .faq-q span {
+  transform: rotate(45deg);
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Kaaram &amp; Co.</title>
+<meta name="description" content="Kaaram &amp; Co. – authentic Chettinad and Chennai street food with a rooftop in Anna Nagar and family dining in Velachery. Reserve a table, stay with us, plan events and order catering.">
+<meta name="theme-color" content="#d4701a">
+<link rel="icon" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body data-page="contact">
+<main id="app">
+<section class="page show" id="contact">
+<div class="banner"><img data-img="venues/bar-lounge" alt="Restaurant interior"><div class="container"><h1>Contact Us</h1><div class="crumb"><a href="index.html">Home</a> / Contact</div></div></div>
+<section class="section"><div class="container"><div class="g2" id="contactBranches" style="align-items:stretch"></div></div></section>
+<section class="section alt"><div class="container g2" style="align-items:start">
+  <form class="form js-form" data-kind="contact" novalidate>
+    <h3>Send Us a Message</h3><p>Feedback, partnerships or general questions — we reply within one working day.</p>
+    <div class="fg">
+      <div class="f"><label>Name *</label><input name="name" required><span class="e">Please enter your name</span></div>
+      <div class="f"><label>Phone *</label><input name="phone" type="tel" required data-phone><span class="e">Enter a valid 10-digit number</span></div>
+      <div class="f full"><label>Email</label><input name="email" type="email"></div>
+      <div class="f full"><label>Subject *</label><select name="sub" required><option value="">Select</option><option>General enquiry</option><option>Feedback</option><option>Complaint</option><option>Partnership / Vendor</option></select><span class="e">Select a subject</span></div>
+      <div class="f full"><label>Message *</label><textarea name="msg" rows="4" required></textarea><span class="e">Please write a message</span></div>
+    </div>
+    <button class="btn" type="submit">Send Message</button>
+    <div class="ok"></div>
+  </form>
+  <div><span class="eyebrow">FAQ</span><h2 class="title">Frequently Asked Questions</h2><div id="faq"></div></div>
+</div></section>
+</section>
+</main>
+<script src="js/boot.js"></script>
+</body>
+</html>
