@@ -292,6 +292,20 @@
   .rm-body {
     padding: 10px 20px 24px;
   }
+  .rm-body .row {
+    flex-wrap: wrap;
+  }
+  .rm-body .row h2 {
+    font-size: 1.4rem !important;
+  }
+  .rm-body .row .price {
+    font-size: 1.15rem !important;
+  }
+  .rm-body .rm-meta {
+    grid-template-columns: 1fr 1fr !important;
+    justify-content: normal !important;
+    gap: 10px 14px !important;
+  }
 }
 
 .near {
